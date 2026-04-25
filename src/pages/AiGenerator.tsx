@@ -79,39 +79,40 @@ export default function AiGenerator() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-[#0A0A0B] py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10 relative">
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#3E63DD] opacity-20 blur-[150px] rounded-full pointer-events-none"></div>
+      <div className="max-w-4xl mx-auto relative z-10">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-heading font-bold text-slate-900 mb-4 inline-flex items-center gap-3">
-            <span className="p-2 bg-purple-100 rounded-xl text-purple-600">
+          <h1 className="text-4xl font-black text-white mb-4 uppercase tracking-tighter inline-flex items-center gap-3">
+            <span className="p-2 bg-[#3E63DD]/20 rounded-md text-[#3E63DD]">
               <BrainCircuit className="w-8 h-8" />
             </span>
             AI Question Generator
           </h1>
-          <p className="text-lg text-slate-600">Generate personalized MCQs based on varying difficulty levels.</p>
+          <p className="text-lg text-white/50 font-light italic">Generate personalized MCQs based on varying difficulty levels.</p>
         </div>
 
         {!questions && !isGenerating && (
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center"
+            className="bg-[#111113] p-8 border border-white/10 text-center shadow-xl"
           >
             <div className="max-w-md mx-auto space-y-6">
               <div className="grid grid-cols-2 gap-4 text-left">
-                <div className="p-4 border border-slate-200 rounded-xl bg-slate-50">
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Topic</label>
-                  <select className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-brand-500 focus:border-brand-500 outline-none">
+                <div className="p-4 border border-white/10 bg-[#1A1B1E]">
+                  <label className="block text-xs font-bold text-white/60 mb-2 uppercase tracking-widest">Topic</label>
+                  <select className="w-full bg-[#0A0A0B] border border-white/20 text-white px-3 py-2 text-sm focus:ring-0 focus:border-[#3E63DD] outline-none">
                     <option>Kinematics</option>
                     <option>Laws of Motion</option>
                     <option>Thermodynamics</option>
                   </select>
                 </div>
-                <div className="p-4 border border-slate-200 rounded-xl bg-slate-50">
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Difficulty</label>
-                  <select className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-brand-500 focus:border-brand-500 outline-none">
+                <div className="p-4 border border-white/10 bg-[#1A1B1E]">
+                  <label className="block text-xs font-bold text-white/60 mb-2 uppercase tracking-widest">Difficulty</label>
+                  <select className="w-full bg-[#0A0A0B] border border-white/20 text-white px-3 py-2 text-sm focus:ring-0 focus:border-[#3E63DD] outline-none">
                     <option>NEET Level</option>
                     <option>JEE Mains Level</option>
                     <option>JEE Adv Level</option>
@@ -119,7 +120,7 @@ export default function AiGenerator() {
                 </div>
               </div>
               
-              <Button size="lg" className="w-full gap-2 text-lg" onClick={handleGenerate}>
+              <Button size="lg" className="w-full gap-2 text-lg uppercase tracking-widest" onClick={handleGenerate}>
                 <BrainCircuit className="w-5 h-5" />
                 Generate My 5 MCQs
               </Button>
@@ -130,10 +131,10 @@ export default function AiGenerator() {
         {isGenerating && (
           <div className="flex flex-col items-center justify-center py-20">
              <div className="relative">
-               <div className="w-16 h-16 border-4 border-brand-200 border-t-brand-600 rounded-full animate-spin"></div>
-               <BrainCircuit className="w-6 h-6 text-brand-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+               <div className="w-16 h-16 border-4 border-[#3E63DD]/20 border-t-[#3E63DD] rounded-full animate-spin"></div>
+               <BrainCircuit className="w-6 h-6 text-[#3E63DD] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
              </div>
-             <p className="mt-4 text-slate-600 font-medium animate-pulse">AI is crafting matching questions...</p>
+             <p className="mt-4 text-white/60 font-medium animate-pulse tracking-widest uppercase text-xs">AI is crafting matching questions...</p>
           </div>
         )}
 
@@ -141,21 +142,21 @@ export default function AiGenerator() {
           <div className="space-y-6">
             
             {/* Top Bar Navigation */}
-            <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-wrap justify-between items-center gap-4 sticky top-20 z-40">
+            <div className="bg-[#1A1B1E] p-4 border border-white/10 flex flex-wrap justify-between items-center gap-4 sticky top-20 z-40">
               <div className="flex gap-2">
                 {questions.map((_, idx) => {
-                  let statusColor = "bg-slate-100 text-slate-600 border border-slate-200";
-                  if (selectedAnswers[idx] !== undefined) statusColor = "bg-brand-100 text-brand-700 border-brand-300 font-bold";
+                  let statusColor = "bg-[#111113] text-white/60 border border-white/10";
+                  if (selectedAnswers[idx] !== undefined) statusColor = "bg-[#3E63DD]/20 text-[#3E63DD] border-[#3E63DD]/50 font-black";
                   if (showResults) {
-                     if (selectedAnswers[idx] === questions[idx].correctAnswer) statusColor = "bg-green-100 text-green-700 border-green-300 font-bold";
-                     else statusColor = "bg-red-100 text-red-700 border-red-300 font-bold";
+                     if (selectedAnswers[idx] === questions[idx].correctAnswer) statusColor = "bg-green-900/30 text-green-500 border-green-500/50 font-black";
+                     else statusColor = "bg-red-900/30 text-red-500 border-red-500/50 font-black";
                   }
                   
                   return (
                     <button 
                       key={idx}
                       onClick={() => setCurrentQuestionIndex(idx)}
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${statusColor} ${currentQuestionIndex === idx ? 'ring-2 ring-brand-500 ring-offset-2' : ''}`}
+                      className={`w-10 h-10 flex items-center justify-center transition-all ${statusColor} ${currentQuestionIndex === idx ? 'border-b-2 border-b-[#3E63DD] bg-[#3E63DD]/10 text-white' : ''}`}
                     >
                       {idx + 1}
                     </button>
@@ -164,12 +165,12 @@ export default function AiGenerator() {
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg font-mono text-slate-700 font-medium">
-                  <Timer className="w-4 h-4" />
+                <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3 py-1.5 font-mono text-white/80 font-bold text-sm tracking-widest">
+                  <Timer className="w-4 h-4 text-[#3E63DD]" />
                   {formatTime(timeElapsed)}
                 </div>
                 {!showResults && (
-                  <Button variant="accent" size="sm" onClick={handleSubmit}>
+                  <Button variant="primary" size="sm" onClick={handleSubmit}>
                     Submit Test
                   </Button>
                 )}
@@ -183,11 +184,11 @@ export default function AiGenerator() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200"
+                className="bg-[#111113] p-6 md:p-8 border border-white/10"
               >
                 <div className="mb-6 flex justify-between items-start">
-                  <h3 className="text-xl font-medium text-slate-900">
-                    <span className="text-brand-600 font-bold mr-2">Q{currentQuestionIndex + 1}.</span>
+                  <h3 className="text-xl text-white font-medium">
+                    <span className="text-[#3E63DD] font-black mr-2 text-2xl">Q{currentQuestionIndex + 1}.</span>
                     {questions[currentQuestionIndex].text}
                   </h3>
                 </div>
@@ -197,23 +198,23 @@ export default function AiGenerator() {
                     const isSelected = selectedAnswers[currentQuestionIndex] === optIdx;
                     const isCorrect = questions[currentQuestionIndex].correctAnswer === optIdx;
                     
-                    let bgStyle = "bg-white border-slate-200 hover:border-brand-400";
-                    let textStyle = "text-slate-700";
+                    let bgStyle = "bg-[#1A1B1E] border border-white/10 hover:border-white/30 text-white/80";
+                    let textStyle = "";
                     
                     if (isSelected) {
-                      bgStyle = "bg-brand-50 border-brand-500";
-                      textStyle = "text-brand-700 font-medium";
+                      bgStyle = "bg-[#3E63DD]/20 border border-[#3E63DD]";
+                      textStyle = "text-white font-bold";
                     }
 
                     if (showResults) {
                       if (isCorrect) {
-                        bgStyle = "bg-green-50 border-green-500";
-                        textStyle = "text-green-800 font-semibold";
+                        bgStyle = "bg-green-900/30 border border-green-500/50";
+                        textStyle = "text-green-400 font-bold";
                       } else if (isSelected && !isCorrect) {
-                        bgStyle = "bg-red-50 border-red-500";
-                        textStyle = "text-red-800";
+                        bgStyle = "bg-red-900/30 border border-red-500/50";
+                        textStyle = "text-red-400";
                       } else {
-                        bgStyle = "bg-slate-50 border-slate-200 opacity-50 cursor-not-allowed";
+                        bgStyle = "bg-[#1A1B1E] border border-white/5 opacity-50 cursor-not-allowed";
                       }
                     }
 
@@ -222,10 +223,10 @@ export default function AiGenerator() {
                         key={optIdx}
                         onClick={() => handleOptionSelect(currentQuestionIndex, optIdx)}
                         disabled={showResults}
-                        className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${bgStyle} ${textStyle}`}
+                        className={`w-full text-left p-4 transition-all flex items-center justify-between ${bgStyle} ${textStyle}`}
                       >
-                        <span className="flex-1">{String.fromCharCode(65 + optIdx)}. {opt}</span>
-                        {showResults && isCorrect && <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />}
+                        <span className="flex-1 font-mono">{String.fromCharCode(65 + optIdx)}. {opt}</span>
+                        {showResults && isCorrect && <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />}
                         {showResults && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-red-500 flex-shrink-0" />}
                       </button>
                     )
@@ -234,27 +235,27 @@ export default function AiGenerator() {
 
                 {/* Solution Block (Blurred unless unlocked) */}
                 {showResults && (
-                   <div className="mt-8 border-t border-slate-100 pt-8">
-                     <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                   <div className="mt-8 border-t border-white/10 pt-8">
+                     <h4 className="font-black tracking-widest text-[#3E63DD] uppercase mb-4 flex items-center gap-2">
                        Detailed Solution
                      </h4>
                      
-                     <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-slate-200">
-                       <div className={`p-6 ${!isUnlocked ? 'filter blur-sm select-none' : ''}`}>
-                         <p className="text-slate-700 whitespace-pre-wrap font-mono text-sm leading-relaxed">
+                     <div className="relative border border-white/10 bg-[#1A1B1E] overflow-hidden">
+                       <div className={`p-6 ${!isUnlocked ? 'filter blur-md select-none opacity-50' : ''}`}>
+                         <p className="text-white/80 whitespace-pre-wrap font-mono text-sm leading-relaxed">
                            {questions[currentQuestionIndex].solution}
                          </p>
                        </div>
                        
                        {!isUnlocked && (
-                         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/40 backdrop-blur-md">
-                           <div className="bg-white p-6 rounded-2xl shadow-xl text-center max-w-sm mx-4">
-                              <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#0A0A0B]/60 backdrop-blur-sm">
+                           <div className="bg-[#111113] p-8 border border-white/10 text-center max-w-sm mx-4 shadow-2xl">
+                              <div className="w-12 h-12 bg-amber-900/30 border border-amber-500/50 text-amber-500 rounded-none flex items-center justify-center mx-auto mb-4">
                                 <Lock className="w-6 h-6" />
                               </div>
-                              <h5 className="text-lg font-bold text-slate-900 mb-2">Unlock Solutions</h5>
-                              <p className="text-sm text-slate-600 mb-6">Create a free account to view detailed step-by-step video & text solutions.</p>
-                              <Button className="w-full" onClick={() => setIsUnlocked(true)}>
+                              <h5 className="text-xl font-black uppercase tracking-tighter text-white mb-2">Unlock Solutions</h5>
+                              <p className="text-[10px] uppercase tracking-widest text-white/50 mb-6">Create a free account to view detailed step-by-step solutions.</p>
+                              <Button className="w-full uppercase tracking-widest" onClick={() => setIsUnlocked(true)}>
                                 Create Free Account
                               </Button>
                            </div>
@@ -271,19 +272,19 @@ export default function AiGenerator() {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-brand-900 rounded-2xl p-8 text-white text-center sm:flex sm:items-center sm:justify-between sm:text-left"
+                className="bg-[#3E63DD] p-8 text-white text-center sm:flex sm:items-center sm:justify-between sm:text-left shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"
               >
                 <div>
-                  <h3 className="text-2xl font-bold flex items-center justify-center sm:justify-start gap-2 mb-2">
-                    <Trophy className="w-6 h-6 text-yellow-400" />
+                  <h3 className="text-3xl font-black flex items-center justify-center sm:justify-start gap-2 mb-2 uppercase tracking-tighter">
+                    <Trophy className="w-8 h-8 text-yellow-400" />
                     Quiz Complete!
                   </h3>
-                  <p className="text-brand-200">
+                  <p className="text-white/80 font-mono text-sm">
                     You scored <strong className="text-white text-xl">{score}/{questions.length}</strong> in {formatTime(timeElapsed)}.
                   </p>
                 </div>
                 <div className="mt-6 sm:mt-0 space-x-4">
-                  <Button variant="secondary" onClick={() => handleGenerate()}>
+                  <Button variant="secondary" className="bg-white text-black hover:bg-white/90 border-transparent shadow-none w-full sm:w-auto" onClick={() => handleGenerate()}>
                     Generate New Set
                   </Button>
                 </div>

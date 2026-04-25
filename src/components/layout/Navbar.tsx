@@ -14,16 +14,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <nav className="sticky top-0 z-50 bg-[#0A0A0B]/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-              <div className="p-2 bg-brand-600 rounded-lg text-white">
-                <BookOpen className="w-5 h-5" />
+              <div className="w-8 h-8 bg-[#3E63DD] rounded-full flex items-center justify-center text-sm font-black text-white">
+                Φ
               </div>
-              <span className="font-heading font-bold text-xl text-slate-900">
-                PhysicsMaster
+              <span className="font-black text-2xl tracking-tighter text-white uppercase">
+                PhysicsCore
               </span>
             </Link>
           </div>
@@ -35,15 +35,15 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                  "text-slate-600 hover:text-brand-600 hover:bg-brand-50"
+                  "uppercase tracking-widest text-sm font-medium transition-colors",
+                  "text-white/60 hover:text-white"
                 )}
               >
                 {link.name}
               </Link>
             ))}
-            <button className="ml-4 px-4 py-2 rounded-lg bg-brand-600 text-white font-medium text-sm hover:bg-brand-700 transition-colors shadow-sm">
-              Free Sign Up
+            <button className="ml-8 border border-white/20 px-6 py-2 text-xs font-bold uppercase text-white hover:bg-white hover:text-black transition-colors rounded-none">
+              Login
             </button>
           </div>
 
@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:bg-slate-100 focus:text-slate-500 transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-none text-white/60 hover:text-white hover:bg-white/5 focus:outline-none focus:bg-white/5 focus:text-white transition-colors"
             >
               {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
             </button>
@@ -66,7 +66,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-white border-b border-slate-200"
+            className="md:hidden overflow-hidden bg-[#0A0A0B] border-b border-white/10"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {links.map((link) => (
@@ -74,14 +74,14 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-brand-50"
+                  className="block px-3 py-2 text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white hover:bg-white/5"
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="pt-4 pb-2">
-                <button className="w-full px-4 py-3 rounded-lg bg-brand-600 text-white font-medium text-base hover:bg-brand-700 shadow-sm">
-                  Free Sign Up
+                <button className="w-full border border-white/20 px-6 py-3 text-xs font-bold uppercase text-white hover:bg-white hover:text-black transition-colors rounded-none">
+                  Login
                 </button>
               </div>
             </div>
